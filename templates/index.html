@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+</head>
+<body>
+	<h1>Events</h1>
+	<a href="/new">Create Event</a>
+	<ul>
+	{{range .}}
+		<li>{{.Title}} — {{.Date}}</li>
+	{{end}}
+	</ul>
+</body>
+</html>

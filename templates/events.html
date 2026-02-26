@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Events</title></head>
+<body>
+	<h1>Events</h1>
+	<a href="/new">Create Event</a>
+	<ul>
+	{{range .}}
+		<li>
+			<b>{{.Title}}</b> ({{.Date}})
+			<a href="/event?id={{.ID}}">view</a>
+			<a href="/delete?id={{.ID}}">delete</a>
+		</li>
+	{{end}}
+	</ul>
+</body>
+</html>
