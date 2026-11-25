@@ -4,6 +4,9 @@
 <body>
 	<h1>{{.Event.Title}}</h1>
 	<p>Date: {{.Event.Date}}</p>
+	{{if .Event.Location}}<p>Where: {{.Event.Location}}</p>{{end}}
+	{{if .Event.Description}}<p>{{.Event.Description}}</p>{{end}}
+	<p><a href="/edit?id={{.Event.ID}}">Edit</a> | <a href="/delete?id={{.Event.ID}}">Delete</a></p>
 
 	<h2>Register Attendee</h2>
 	<form action="/register" method="post">
@@ -13,12 +16,16 @@
 		<button>Register</button>
 	</form>
 
-	<h2>Attendees</h2>
+	<h2>Attendees ({{len .Attendees}})</h2>
+	{{if .Attendees}}
 	<ul>
 	{{range .Attendees}}
 		<li>{{.Name}} – {{.Email}}</li>
 	{{end}}
 	</ul>
+	{{else}}
+	<p>No one has signed up yet.</p>
+	{{end}}
 
 	<a href="/">Back</a>
 </body>
