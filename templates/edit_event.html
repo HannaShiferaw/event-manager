@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Event</title></head>
+<body>
+	<h1>Edit Event</h1>
+	<form action="/update" method="post">
+		<input type="hidden" name="id" value="{{.ID}}">
+		<input name="title" placeholder="Event title" value="{{.Title}}" required><br><br>
+		<input name="date" placeholder="YYYY-MM-DD" value="{{.Date}}" required><br><br>
+		<input name="location" placeholder="Where? (optional)" value="{{.Location}}"><br><br>
+		<input name="description" placeholder="What is it about? (optional)" value="{{.Description}}"><br><br>
+		<button>Save</button>
+	</form>
+	<a href="/event?id={{.ID}}">Back</a>
+</body>
+</html>
