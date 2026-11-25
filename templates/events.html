@@ -4,14 +4,24 @@
 <body>
 	<h1>Events</h1>
 	<a href="/new">Create Event</a>
+	<form action="/events" method="get">
+		<input name="q" placeholder="Search events" value="{{.Query}}">
+		<button>Search</button>
+		{{if .Query}}<a href="/events">Show all</a>{{end}}
+	</form>
+	{{if .Events}}
 	<ul>
-	{{range .}}
+	{{range .Events}}
 		<li>
-			<b>{{.Title}}</b> ({{.Date}})
+			<b>{{.Title}}</b> ({{.Date}}) — {{len .Attendees}} coming
 			<a href="/event?id={{.ID}}">view</a>
+			<a href="/edit?id={{.ID}}">edit</a>
 			<a href="/delete?id={{.ID}}">delete</a>
 		</li>
 	{{end}}
 	</ul>
+	{{else}}
+	<p>No events yet. Create the first one.</p>
+	{{end}}
 </body>
 </html>
